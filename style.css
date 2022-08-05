@@ -1,0 +1,165 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: #f3fca5;
+}
+
+
+header {
+	background-color: #3D550C;
+	padding: 10px;
+	text-align: center;
+	color: #ECF87F;
+}
+
+main {
+	padding: 2% 5%;
+	max-height: 100vh;
+	display: flex;
+	gap: 3rem;
+	justify-content: space-around;
+}
+
+.camposContainer {
+	max-height: 100vh;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+.card {
+	border: 1px solid gray;
+	background-color: white;
+	border-radius: 15px;
+	padding: 15px;
+	margin-top: 15px;
+}
+
+.lineInput {
+	display: grid;
+	margin-bottom: 10px;
+}
+
+input {
+	padding: 10px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	padding: 10px;
+	outline: 0;
+	background-color: #3D550C;
+	border-radius: 5px;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	color: #ECF87F;
+}
+
+button:hover {
+	background-color: green;
+	transition: all ease 0.3s;
+}
+
+button:focus {
+	background-color: green;
+	border: 1px solid black;
+}
+
+.content {
+	margin-top: 15px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid gray;
+	width: 100%;
+	margin-bottom: 3rem;
+	background-color: white;
+}
+
+table th {
+	background-color: #3D550C;
+	color: #ECF87F;
+}
+
+table td {
+	text-align: center;
+}
+
+table tr:nth-child(1)>td:nth-child(1) {
+	background-color: rgb(255, 99, 132);
+}
+
+table tr:nth-child(2)>td:nth-child(1) {
+	background-color: rgb(54, 162, 235);
+}
+
+table tr:nth-child(3)>td:nth-child(1) {
+	background-color: rgb(255, 205, 86);
+}
+
+table tr:nth-child(4)>td:nth-child(1) {
+	background-color: rgb(161, 99, 223);
+}
+
+table tr:nth-child(5)>td:nth-child(1) {
+	background-color: rgb(255, 255, 0);
+}
+
+table tr:nth-child(6)>td:nth-child(1){
+	background-color: #1AF938;
+}
+
+table tr:nth-child(7)>td:nth-child(1){
+	background-color: #F91A1A;
+}
+
+
+table td:last-child img {
+	margin: 0 8px;
+}
+
+table td img {
+	cursor: pointer;
+	width: 25px;
+}
+
+table td img:hover {
+	transform: scale(1.15);
+	transition: all ease 0.3s;
+}
+
+.chartContainer {
+	width: 35vw;
+}
+
+@media screen and (max-width:768px) {
+	header {
+		margin-bottom: 5rem;
+		width: 100%;
+	}
+
+	main {
+		
+		display: flex;
+		flex-direction: column;
+	}
+
+	.camposContainer {
+		position: relative;
+		width: 100%;
+	}
+
+	.chartContainer {
+		margin: 0 auto;
+		width: 80vw;
+	}
+}

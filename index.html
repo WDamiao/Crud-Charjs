@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista com Porcentagem</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Area de Relatório</h1>
+    </header>
+    <main>
+        <div class="camposContainer">
+            <div class="card">
+                <div class="lineInput">
+                    <label>Reclamação</label>
+                    <input id="reclamacao" type="text" placeholder="Tipo da reclamação" required>
+                </div>
+                <div class="lineInput">
+                    <label>Quantidade</label>
+                    <input onkeydown="reclamacao.salvarComEnter()" id="quantidade" type="number"
+                        placeholder="Quantidade da reclamação" required>
+                </div>
+                <button onclick="reclamacao.salvar()" class="salvar">Adicionar</button>
+                <button onclick="reclamacao.cancelar()" class="excluir">Cancelar</button>
+            </div>
+            <div class="content">
+                <table border="1">
+                    <thead>
+                        <th>Tipo</th>
+                        <th>Quantidade</th>
+                        <th>Ações</th>
+                    </thead>
+                    <tbody class="tbody">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="chartContainer">
+            <canvas id="myChart"></canvas>
+        </div>
+    </main>
+    <script src="aplicacao.js"></script>
+</body>
+
+</html>
