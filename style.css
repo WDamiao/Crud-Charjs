@@ -18,14 +18,13 @@ header {
 
 main {
 	padding: 2% 5%;
-	max-height: 100vh;
+	max-height: 100%;
 	display: flex;
 	gap: 3rem;
 	justify-content: space-around;
 }
 
 .camposContainer {
-	max-height: 100vh;
 	width: 50%;
 	display: flex;
 	flex-direction: column;
@@ -143,7 +142,7 @@ table td img:hover {
 
 @media screen and (max-width:768px) {
 	header {
-		margin-bottom: 5rem;
+		margin-bottom: 3rem;
 		width: 100%;
 	}
 

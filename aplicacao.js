@@ -107,6 +107,7 @@ class Reclamacao {
         document.getElementById("quantidade").value = dados.quantidade
 
         document.querySelector(".salvar").innerText = "Atualizar"
+        document.getElementById("reclamacao").focus()
     }
 
     atualizar(id, reclamacao) {
@@ -120,12 +121,13 @@ class Reclamacao {
 }
 
 var reclamacao = new Reclamacao();
+
 //-----------------
 
 const data = {
-    labels: [],
+    labels: reclamacao.arrayReclamacao.map(el=>el.tipo),
     datasets: [{
-        label: 'Grafico de reclamações',
+        label: reclamacao.arrayReclamacao.map(el =>el.tipo),
         data: reclamacao.arrayReclamacao.map(el=>el.quantidade),
         backgroundColor: [
             'rgb(255, 99, 132)',
@@ -148,6 +150,24 @@ const config = {
             key: 'quantidade'
         },
         plugins: {
+            tooltip: {
+                yAlign: 'bottom',
+                usePointStyle: true,
+                callbacks: {
+                    title: function(context) {
+                        return reclamacao.arrayReclamacao.map(el=>el.tipo)[context[0].dataIndex]
+                    },
+                    beforeBody: function(context) {
+                        return "Quantidade"
+                    },
+                    labelPointStyle: function(context) {
+                        return {
+                            pointStyle: 'circle',
+                            rotation: 0
+                        }
+                    }
+                }
+            },
             datalabels: {
                 formatter: (value) => {
                     const datapoints = reclamacao.arrayReclamacao.map(el=>el.quantidade);
@@ -157,7 +177,10 @@ const config = {
                     return percentage + "%"
                     
                 },
-                color: 'rgb(0,0,0)'
+                color: 'Black',
+                borderRadius: 100,
+                padding: 5,
+                backgroundColor: '#FFFFFF99',
             }, 
         }
     },
