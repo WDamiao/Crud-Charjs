@@ -4,11 +4,12 @@ class Reclamacao {
         this.id = 0
         this.arrayReclamacao = []
         this.editId = null
-        
+
     }
 
     salvarComEnter() {
-        document.getElementById("quantidade").addEventListener("keyup", e => {
+        const quantidade = document.getElementById("quantidade")
+        quantidade.addEventListener("keyup", e => {
             if (e.key === "Enter") {
                 this.salvar()
                 document.getElementById("reclamacao").focus()
@@ -29,7 +30,17 @@ class Reclamacao {
         this.listaTabela()
         attGrafico()
         this.cancelar()
+        this.addColorToTable()
+        document.getElementById("reclamacao").focus()
     }
+
+    addColorToTable() {
+        let cellTipo = document.querySelectorAll('.cellTipo')
+        for (let i = 0; i < cellTipo.length; i++) {
+            cellTipo[i].setAttribute('style', `background-color: ${arrayDeCores[i]}`)
+        }
+    }
+
 
     listaTabela() {
         let tbody = document.querySelector(".tbody")
@@ -37,6 +48,7 @@ class Reclamacao {
         for (let i = 0; i < this.arrayReclamacao.length; i++) {
             let tr = tbody.insertRow()
             let tdTipo = tr.insertCell()
+            tdTipo.classList.add('cellTipo')
             let tdQuant = tr.insertCell()
             let tdAcao = tr.insertCell()
 
@@ -98,6 +110,7 @@ class Reclamacao {
                 tbody.deleteRow(i)
             }
         }
+        this.addColorToTable()
         attGrafico()
     }
 
@@ -122,22 +135,24 @@ class Reclamacao {
 
 var reclamacao = new Reclamacao();
 
-//-----------------
-
+//----------------- Chart JS -------------------------------
+const arrayDeCores = [
+    'rgb(255, 99, 132)',
+    'rgb(54, 162, 235)',
+    'rgb(255, 205, 86)',
+    'rgb(161, 99, 223)',
+    'rgb(255,255,0)',
+    '#1AF938',
+    '#F91A1A',
+    '#3A6543',
+    '#2A4858',
+    '#582E2A']
 const data = {
-    labels: reclamacao.arrayReclamacao.map(el=>el.tipo),
+    labels: reclamacao.arrayReclamacao.map(el => el.tipo),
     datasets: [{
-        label: reclamacao.arrayReclamacao.map(el =>el.tipo),
-        data: reclamacao.arrayReclamacao.map(el=>el.quantidade),
-        backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)',
-            'rgb(161, 99, 223)',
-            'rgb(255,255,0)',
-            '#1AF938',
-            '#F91A1A'
-        ],
+        label: reclamacao.arrayReclamacao.map(el => el.tipo),
+        data: reclamacao.arrayReclamacao.map(el => el.quantidade),
+        backgroundColor: arrayDeCores,
         hoverOffset: 4
     }]
 };
@@ -154,13 +169,13 @@ const config = {
                 yAlign: 'bottom',
                 usePointStyle: true,
                 callbacks: {
-                    title: function(context) {
-                        return reclamacao.arrayReclamacao.map(el=>el.tipo)[context[0].dataIndex]
+                    title: function (context) {
+                        return reclamacao.arrayReclamacao.map(el => el.tipo)[context[0].dataIndex]
                     },
-                    beforeBody: function(context) {
+                    beforeBody: function (context) {
                         return "Quantidade"
                     },
-                    labelPointStyle: function(context) {
+                    labelPointStyle: function (context) {
                         return {
                             pointStyle: 'circle',
                             rotation: 0
@@ -170,18 +185,18 @@ const config = {
             },
             datalabels: {
                 formatter: (value) => {
-                    const datapoints = reclamacao.arrayReclamacao.map(el=>el.quantidade);
-                    const sum =(total, el)=>parseInt(total) +parseInt(el)
+                    const datapoints = reclamacao.arrayReclamacao.map(el => el.quantidade);
+                    const sum = (total, el) => parseInt(total) + parseInt(el)
                     const totalsum = datapoints.reduce(sum)
                     const percentage = (value / totalsum * 100).toFixed(1)
                     return percentage + "%"
-                    
+
                 },
                 color: 'Black',
                 borderRadius: 100,
                 padding: 5,
                 backgroundColor: '#FFFFFF99',
-            }, 
+            },
         }
     },
     plugins: [ChartDataLabels]
@@ -192,7 +207,7 @@ const myChart = new Chart(
     config
 );
 
-const attGrafico = ()=>{
-    myChart.data.datasets[0].data = reclamacao.arrayReclamacao.map(el=>el.quantidade)
+const attGrafico = () => {
+    myChart.data.datasets[0].data = reclamacao.arrayReclamacao.map(el => el.quantidade)
     myChart.update()
 }
