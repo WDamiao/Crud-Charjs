@@ -19,11 +19,6 @@ header {
 	color: #ECF87F;
 }
 
-.imgContato {
-	width: 50px;
-	margin-left: 1rem;
-}
-
 main {
 	padding: 2% 5%;
 	display: flex;
@@ -129,6 +124,11 @@ footer {
 	align-items: center;
 	justify-content: center;
 	padding: 0.5rem;
+}
+
+.imgContato {
+	width: 50px;
+	margin-left: 1rem;
 }
 
 @media screen and (max-width:768px) {
