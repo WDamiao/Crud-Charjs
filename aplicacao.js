@@ -58,8 +58,10 @@ class Reclamacao {
             let imgEdit = document.createElement("img")
             let imgDelete = document.createElement("img")
             imgDelete.src = "./icones/deleteIcon.svg"
+            imgDelete.setAttribute("alt", "deletar")
             imgDelete.setAttribute("onclick", "reclamacao.deletar(" + this.arrayReclamacao[i].id + ")")
             imgEdit.src = "./icones/editIcon.svg"
+            imgEdit.setAttribute("alt", "editar")
             imgEdit.setAttribute("onclick", "reclamacao.preparaEdicao(" + JSON.stringify(this.arrayReclamacao[i]) + ")")
             imgDelete.classList.add("deletar")
             tdAcao.appendChild(imgEdit)
